@@ -47,6 +47,7 @@ export function useLeaderboard() {
     async function loadLeaderboard() {
       try {
         const data = await fetchLeaderboard();
+        console.log(data);
         setLeaderboard(data);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('An error occurred while fetching the leaderboard'));

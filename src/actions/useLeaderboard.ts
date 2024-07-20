@@ -28,7 +28,8 @@ async function fetchLeaderboard(): Promise<[Analytics, Analytics, Analytics]> {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    console.log(response);
+     const responseText = await response.text();
+    console.log("Response text:", responseText);
     const data = await response.json() as [Analytics, Analytics, Analytics];
     return data;
   } catch (error) {

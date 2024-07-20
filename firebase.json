@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+         "source": "/leaderboard",
+        "destination": "https://baas-data-provider.onrender.com/leaderboard"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

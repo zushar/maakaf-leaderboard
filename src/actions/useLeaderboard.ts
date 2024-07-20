@@ -24,7 +24,7 @@ export type Analytics = {
 
 async function fetchLeaderboard(): Promise<[Analytics, Analytics, Analytics]> {
   try {
-    const response = await fetch("https://baas-data-provider.onrender.com/leaderboard");
+    const response = await fetch("/leaderboard");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

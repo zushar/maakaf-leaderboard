@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import axios from 'axios';
 export type Analytics = {
   members: {
     name: string;
@@ -24,16 +24,14 @@ export type Analytics = {
 
 async function fetchLeaderboard(): Promise<[Analytics, Analytics, Analytics]> {
   try {
-    const response = await fetch("/leaderboard");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-     const responseText = await response.text();
-    console.log("Response text:", responseText);
-    const data = await response.json() as [Analytics, Analytics, Analytics];
-    return data;
+    const response = await axios.get<[Analytics, Analytics, Analytics]>("/leaderboard");
+    return response.data;
   } catch (error) {
-    console.error('Error fetching leaderboard:', error);
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error:', error.response?.data || error.message);
+    } else {
+      console.error('Error fetching leaderboard:', error);
+    }
     throw error;
   }
 }

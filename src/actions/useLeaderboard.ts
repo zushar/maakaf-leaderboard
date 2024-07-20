@@ -24,7 +24,7 @@ export type Analytics = {
 
 async function fetchLeaderboard(): Promise<[Analytics, Analytics, Analytics]> {
   try {
-    const response = await axios.get<[Analytics, Analytics, Analytics]>("/leaderboard");
+    const response = await axios.get<[Analytics, Analytics, Analytics]>("https://baas-data-provider.onrender.com/leaderboard");
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

@@ -24,12 +24,11 @@ export type Analytics = {
 
 async function fetchLeaderboard(): Promise<[Analytics, Analytics, Analytics]> {
   try {
-    const response = await fetch("/leaderboard", {
-      credentials: 'include', // This includes cookies in the request
-    });
+    const response = await fetch("/leaderboard");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    console.log(response);
     const data = await response.json() as [Analytics, Analytics, Analytics];
     return data;
   } catch (error) {

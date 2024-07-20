@@ -15,7 +15,7 @@ const LeaderboardPage: React.FC = () => {
 
   return (
     <>
-      <div className="sticky top-0 bg-gray-600 z-10 shadow-md text-white">
+      <div className="sticky top-0 bg-gray-600 z-10 shadow-md text-gray-400">
       <h3 className="text-2xl font-bold text-center">Our Contributions In Maakaf</h3>
         <div className="font-bold flex flex-row justify-center p-2">
           <a href={"#allTimes"} className="transition duration-300 group px-4">

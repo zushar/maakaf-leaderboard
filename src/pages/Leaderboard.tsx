@@ -32,8 +32,8 @@ const LeaderboardPage: React.FC = () => {
           </a>
         </div>
       </div>
-      <ContributionsList data={contributors2} key={`contributors2`} />
       <ContributionsList data={contributors3} key={`contributors3`} />
+      <ContributionsList data={contributors2} key={`contributors2`} />
       <ContributionsList data={contributors} key={`contributors`} />
     </>
   )

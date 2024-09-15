@@ -9,7 +9,7 @@
     "rewrites": [
       {
          "source": "/leaderboard",
-        "destination": "https://baas-data-provider.onrender.com/leaderboard"
+        "destination": "https://server.makkaf.xyz/leaderboard"
       },
       {
         "source": "**",

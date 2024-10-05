@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <div className="sticky top-0 bg-sky-700 z-10 shadow-md text-gray-100">
       <div className="relative flex items-center justify-center px-4 py-2">
-        <a href="http://localhost:3000/he" className="absolute left-4 text-white hover:text-gray-200 transition duration-300">
+        <a href="https://maakaf.com/he" className="absolute left-4 text-white hover:text-gray-200 transition duration-300">
           <Home size={24} />
 {/* to do chince */}
         </a>

@@ -1,33 +1,9 @@
 import React, { memo, useState } from 'react';
 import { useLeaderboard } from '../actions/useLeaderboard';
 import { ContributorsInsights, addContributorsInsightsInsights, formatSinceAndUntil, mapMembers } from '../actions/leaderboardFunctions';
-import { Home, Loader, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Loader, ChevronLeft, ChevronRight } from 'lucide-react';
+import Header from '../components/Header';
 
-const Header: React.FC = () => {
-  return (
-    <div className="sticky top-0 bg-sky-700 z-10 shadow-md text-gray-100">
-      <div className="relative flex items-center justify-center px-4 py-2">
-        <a href="https://maakaf.com/he" aria-label='link to https://maakaf.com/he' className="absolute left-4 text-white hover:text-gray-200 transition duration-300">
-          <Home size={24} />
-{/* to do chince */}
-        </a>
-        <h3 className="text-xl md:text-2xl font-bold text-center text-white">Our Contributions In Maakaf</h3>
-      </div>
-      <nav className="font-bold flex flex-col md:flex-row justify-center p-2 space-y-2 md:space-y-0">
-        <HeaderLink href="#allTimes" text="All Times" />
-        <HeaderLink href="#lastMonth" text="Last Month" />
-        <HeaderLink href="#lastWeek" text="Last Week" />
-      </nav>
-    </div>
-  );
-};
-
-const HeaderLink: React.FC<{ href: string; text: string }> = ({ href, text }) => (
-  <a href={href} className="transition duration-300 group px-4 text-white text-sm md:text-base">
-    <span>{text}</span>
-    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white" />
-  </a>
-);
 
 const LeaderboardPage: React.FC = () => {
   const { leaderboard, loading, error } = useLeaderboard();

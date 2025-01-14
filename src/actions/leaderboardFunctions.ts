@@ -14,7 +14,7 @@ export function formatSinceAndUntil(since: number, until: number) {
   const untilDay = String(untilDate.getDate()).padStart(2, "0");
   
   return `From ${sinceDay}-${sinceMonth}-${sinceYear} to ${untilDay}-${untilMonth}-${untilYear}`;
-};
+}
 
 // Insights:
 function getMostCommits(members: Analytics["members"]) {

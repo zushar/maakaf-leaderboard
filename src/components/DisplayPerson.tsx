@@ -1,6 +1,5 @@
-// src/components/DisplayPerson.tsx
 import React from 'react';
-import { ContributorsInsights } from '../actions/leaderboardFunctions'; // Adjust the import path based on your project
+import { ContributorsInsights } from '../actions/leaderboardFunctions'; 
 
 interface PersonPlace {
   data: ContributorsInsights['members'][number] & {
@@ -10,11 +9,12 @@ interface PersonPlace {
   place: number;
 }
 
-const DisplayPerson: React.FC<PersonPlace> = ({ data, place }) => {
+const DisplayPerson: React.FC<PersonPlace> = ({ data }) => {
   const insights = React.useMemo(() => {
     return Object.entries(data.insights)
-      .filter(([key, value]) => value)
-      .map(([key]) => key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()));
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .filter(([key, value]) => value)  // השתמש ב-'key' ו-'value' כאן
+      .map(([key]) => key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())); // השתמש ב-'key' כדי לעבד את התובנה
   }, [data.insights]);
 
   return (
@@ -48,18 +48,21 @@ const DisplayPerson: React.FC<PersonPlace> = ({ data, place }) => {
           <h3 className="text-gray-900 text-base md:text-lg font-semibold">Projects</h3>
           <ul className="mt-1 md:mt-2 text-sm md:text-base text-gray-700">
             {data.projects_names.slice(0, 3).map((project, index) => (
-              <li key={index} className="truncate">{project.name}</li>
+              <li key={index} className="truncate">
+                <a href={data.projects_name_urls[index]} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  {project.name}
+                </a>
+              </li>
             ))}
             {data.projects_names.length > 3 && <li>+{data.projects_names.length - 3} more</li>}
           </ul>
         </div>
         <div className="mt-2 md:mt-4">
-          <h3 className="text-gray-900 text-base md:text-lg font-semibold">Insights</h3>
-          <ul className="mt-1 md:mt-2 text-sm md:text-base text-gray-700">
-            {insights.slice(0, 3).map((insight, index) => (
-              <li key={index} className="truncate">{insight}</li>
+          <h3 className="text-gray-900 text-lg font-semibold">Insightful Contributions</h3>
+          <ul className="mt-2 text-gray-700">
+            {insights.map((insight, index) => (
+              <li key={index}>{insight}</li>
             ))}
-            {insights.length > 3 && <li>+{insights.length - 3} more</li>}
           </ul>
         </div>
       </div>
@@ -67,4 +70,6 @@ const DisplayPerson: React.FC<PersonPlace> = ({ data, place }) => {
   );
 };
 
-export default DisplayPerson;
+const MemoizedDisplayPerson = React.memo(DisplayPerson);
+
+export default MemoizedDisplayPerson;
